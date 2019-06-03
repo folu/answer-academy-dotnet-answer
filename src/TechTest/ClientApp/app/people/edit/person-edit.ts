@@ -43,8 +43,13 @@ export class PersonEdit {
     // Send a JSON request to the API with the newly updated
     // this.person object. If the response is successful then
     // the user should be navigated to the list page.
+      var jsonResponse = await this.http.fetch(this.heading);
 
-    throw new Error('Not Implemented');
+      if(jsonResponse.ok)
+      {
+          this.router.navigate('list');
+      }
+    //throw new Error('Not Implemented');
   }
 
   cancel() {

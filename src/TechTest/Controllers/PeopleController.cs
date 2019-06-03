@@ -26,7 +26,15 @@ namespace TechTest.Controllers
             // people returned from PeopleRepository then an empty
             // JSON array should be returned.
 
-            throw new NotImplementedException();
+            //get all the people that has been added statically inside the class model
+            
+            var people = this.PersonRepository.GetAll();
+            if (people != null)
+            {
+                return View(people);
+            }
+            return View();
+            //throw new NotImplementedException();
         }
 
         [HttpGet("{id}")]
@@ -38,8 +46,13 @@ namespace TechTest.Controllers
             // from the PeopleRepository based on the id parameter.
             // If null is returned from the PeopleRepository with
             // the supplied id then a NotFound should be returned.
-
-            throw new NotImplementedException();
+            var person = this.PersonRepository.Get(id);
+            if (person != null)
+            {
+                return View(person);
+            }
+            return View();
+            //throw new NotImplementedException();
         }
 
         [HttpPut("{id}")]
@@ -54,7 +67,9 @@ namespace TechTest.Controllers
             // If null is returned from the PeopleRepository then a
             // NotFound should be returned.
 
-            throw new NotImplementedException();
+            bool personFound = this.PersonRepository.Update(personUpdate);
+
+           //throw new NotImplementedException();
         }
     }
 }
